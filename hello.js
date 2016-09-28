@@ -34,6 +34,7 @@ function build(opts, cb) {
                 db // Equivalent to: db = db
             }
         },
+        require ('./lib/loadplugin'),
         require('./lib/myplugin')
     ], (err) => {
         cb(err, server)
