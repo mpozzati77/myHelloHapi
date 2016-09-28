@@ -17,13 +17,8 @@ function build(opts, cb) {
     server.connection({ port: opts.port })
 
     server.register([
+        require('./lib/assetplugin'),
         require('./lib/myplugin')
-    ], (err) => {
-        cb(err, server)
-    })
-
-    server.register([
-        require('./lib/assetplugin')
     ], (err) => {
         cb(err, server)
     })
