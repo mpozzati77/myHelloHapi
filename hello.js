@@ -16,6 +16,8 @@ function build(opts, cb) {
 
     const server = new Hapi.Server()
 
+    // Uses level, if --path option is used on command line. Else uses memdb.
+    // Example: node hello --path dbfolder
     var db = opts.db;
     if (!db && opts.path) {
         db = level(opts.path)
@@ -25,10 +27,11 @@ function build(opts, cb) {
 
     server.connection({ port: opts.port })
 
+    // Registers plugins to expose on server
     server.register([{
             register: require('./lib/assetplugin'),
-            options: {
-                db
+            options: { // Sets options
+                db // Equivalent to: db = db
             }
         },
         require('./lib/myplugin')
