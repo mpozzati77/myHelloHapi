@@ -1,6 +1,6 @@
 {
   "name": "@darkever/hapiassetservice",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Hapi Asset Service",
   "main": "hello.js",
   "scripts": {
