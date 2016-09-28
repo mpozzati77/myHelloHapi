@@ -5,6 +5,8 @@
 const Hapi = require('hapi')
 const xtend = require('xtend')
 const minimist = require('minimist')
+const memdb = require('memdb');
+const level = require('level');
 const defaults = {
     port: 8989
 }
@@ -14,10 +16,21 @@ function build(opts, cb) {
 
     const server = new Hapi.Server()
 
+    var db = opts.db;
+    if (!db && opts.path) {
+        db = level(opts.path)
+    } else if (!db) {
+        db = memdb();
+    }
+
     server.connection({ port: opts.port })
 
-    server.register([
-        require('./lib/assetplugin'),
+    server.register([{
+            register: require('./lib/assetplugin'),
+            options: {
+                db
+            }
+        },
         require('./lib/myplugin')
     ], (err) => {
         cb(err, server)
