@@ -41,6 +41,7 @@
     "minimist": "^1.1.1",
     "pump": "^1.0.1",
     "typescript": "^2.0.3",
+    "typings": "^1.4.0",
     "xtend": "^4.0.1"
   },
   "directories": {
