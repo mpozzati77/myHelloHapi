@@ -6,7 +6,6 @@ const Hapi = require('hapi')
 const xtend = require('xtend')
 const minimist = require('minimist')
 const memdb = require('memdb');
-const level = require('level');
 const defaults = {
     port: 8989
 }
@@ -18,12 +17,7 @@ function build(opts, cb) {
 
     // Uses level, if --path option is used on command line. Else uses memdb.
     // Example: node hello --path dbfolder
-    var db = opts.db;
-    if (!db && opts.path) {
-        db = level(opts.path)
-    } else if (!db) {
         db = memdb();
-    }
 
     server.connection({ port: opts.port })
 
