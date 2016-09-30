@@ -17,7 +17,7 @@ function build(opts, cb) {
 
     // Uses level, if --path option is used on command line. Else uses memdb.
     // Example: node hello --path dbfolder
-        db = memdb();
+    var db = memdb();
 
     server.connection({ port: opts.port })
 
