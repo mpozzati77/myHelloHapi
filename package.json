@@ -36,7 +36,6 @@
     "@darkever/assetservice": "^1.2.0",
     "hapi": "^15.1.1",
     "joi": "^9.0.4",
-    "level": "^1.4.0",
     "memdb": "^1.3.1",
     "minimist": "^1.1.1",
     "pump": "^1.0.1",
